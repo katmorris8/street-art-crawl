@@ -6,6 +6,9 @@ const sequelize = new Sequelize({
 });
 
 const User = sequelize.define('user', {
+  firstName: Sequelize.TEXT,
+  lastName: Sequelize.TEXT,
+  email: Sequelize.TEXT,
   userName:{
     type:Sequelize.TEXT,
     unique:true
@@ -17,7 +20,7 @@ const User = sequelize.define('user', {
 });
 
 const Art = sequelize.define('art', {
-  name: Sequelize.TEXT,
+  neighborhood: Sequelize.TEXT,
   location: Sequelize.TEXT,
   date: Sequelize.DATEONLY,
   description:Sequelize.TEXT,
