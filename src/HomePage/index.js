@@ -11,9 +11,9 @@ class HomePage extends Component {
 
     render() {
         return (
-                <div className='homepage-container'>
-                    <h1 className='homepage-title'>Street Art Crawl</h1>
-                </div>
+            <div className='homepage-container'>
+                <h1 className='homepage-title'>Street Art Crawl</h1>
+            </div>
         )
     }
 }
