@@ -4,6 +4,7 @@ import HomePage from '../HomePage';
 import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
 import MapPage from '../MapPage';
 import Profile from '../Profile';
+import Register from "../Register";
 
 
 class App extends Component {
@@ -34,13 +35,15 @@ class App extends Component {
       <div className="App">
         <Router>
           <div className='nav-container'>
-            {this.props.loggedIn &&
+            {!this.props.loggedIn &&
               <div>
-                <button className='register-btn'>Register</button>
+                <Link to='/register'>
+                  <button className='register-btn'>Register</button>
+                </Link>
                 <button className='login-btn'>Login</button>
               </div>
             }
-            {!this.props.loggedIn &&
+            {this.props.loggedIn &&
               <nav className='nav-bar homepage-nav'>
                 <Link to='/'>Home</Link>
                 &nbsp;
@@ -48,9 +51,11 @@ class App extends Component {
                 &nbsp;
                 <Link to='/profile'>Profile</Link>
               </nav>}
+            <Route path="/register" exact component={Register}/>
             <Route path="/" exact component={HomePage} />
             <Route path="/map" render={(props) => <MapPage {...props} lat={this.state.lat} long={this.state.lng} zoom={this.state.zoom}/>} />
             <Route path="/profile" exact component={Profile} />
+            
           </div>
         </Router>
 
