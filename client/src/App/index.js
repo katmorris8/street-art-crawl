@@ -30,7 +30,7 @@ class App extends Component {
     return (
       <div>
         <div className="App">Hello World</div>
-        <LeafletMap lat={this.state.lat} long={this.state.lng} zoom={this.state.zoom} />
+        {/* <LeafletMap lat={this.state.lat} long={this.state.lng} zoom={this.state.zoom} /> */}
       </div>
     )
   }
