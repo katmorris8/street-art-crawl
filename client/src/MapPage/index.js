@@ -8,7 +8,7 @@ class MapPage extends Component {
   render() {
     return (
       <div>
-        {/* <LeafletMap lat={this.state.lat} long={this.state.lng} zoom={this.state.zoom} /> */}
+        <LeafletMap lat={this.props.lat} long={this.props.long} zoom={this.props.zoom} />
       </div>
     )
   }
