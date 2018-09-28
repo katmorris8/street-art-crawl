@@ -40,6 +40,7 @@ export default class Register extends Component {
 
     submitHandler = (e) => {
         e.preventDefault();
+        this.register();
 
     }
 

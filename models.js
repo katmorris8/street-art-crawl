@@ -9,11 +9,11 @@ const User = sequelize.define('user', {
   firstName: Sequelize.TEXT,
   lastName: Sequelize.TEXT,
   email: Sequelize.TEXT,
-  userName:{
+  username:{
     type:Sequelize.TEXT,
     unique:true
   }, 
-  password: Sequelize.TEXT,
+  passwordDigest: Sequelize.TEXT,
   userScore: Sequelize.INTEGER,
   icon:Sequelize.TEXT,
   art_id:Sequelize.INTEGER

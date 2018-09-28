@@ -1,6 +1,9 @@
 const express = require('express');
+const { User } = require('./models')
 const bodyParser = require('body-parser');
 const PORT = process.env.PORT || 5678;
+const jwt = require('jsonwebtoken');
+const bcrypt = require('bcrypt');
 
 const app = express();
 
