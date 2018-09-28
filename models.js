@@ -24,6 +24,7 @@ const Art = sequelize.define('art', {
   location: Sequelize.TEXT,
   date: Sequelize.DATEONLY,
   description:Sequelize.TEXT,
+  posterPath:Sequelize.TEXT,
   user_id:Sequelize.INTEGER
 });
 
