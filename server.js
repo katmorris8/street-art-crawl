@@ -12,7 +12,7 @@ app.use(bodyParser.json());
 const jwtSecret = 'shhh12748293';
 
 app.post('/api/register', async (request, response) => {
-  const { username, password } = request.body;
+  const { firstName, lastName, email, username, password } = request.body;
   if (!username || !password) {
     response.status(400).json({
       error: "Registration requires a username and password in the request body."
@@ -34,6 +34,9 @@ app.post('/api/register', async (request, response) => {
   const passwordDigest = await bcrypt.hash(password, 12);
 
   const user = await User.create({
+    firstName: firstName,
+    lastName: lastName,
+    email: email,
     username: username,
     passwordDigest: passwordDigest
   });
