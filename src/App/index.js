@@ -13,8 +13,8 @@ class App extends Component {
     super(props)
 
     this.state = {
-      lat: 51.505,
-      lng: -0.09,
+      lat: 40.7527,
+      lng: 73.9772,
       zoom: 15,
       isLoggedIn: false
     }
@@ -62,10 +62,10 @@ class App extends Component {
                 &nbsp;
                 <Link to='/profile'>Profile</Link>
               </nav>}
-            <Route path="/register" render={(props) => <Register {...props} isLoggedIn={this.state.isLoggedIn} getLoggedIn={this.getLoggedIn}/>}/>
-            <Route path="/login" render={(props) => <Login {...props} isLoggedIn={this.state.isLoggedIn} getLoggedIn={this.getLoggedIn}/>}/>
-            <Route path="/" exact component={HomePage} />
-            <Route path="/map" render={(props) => <MapPage {...props} lat={this.state.lat} long={this.state.lng} zoom={this.state.zoom}/>} />
+            <Route path="/register" exact render={(props) => <Register {...props} isLoggedIn={this.state.isLoggedIn} getLoggedIn={this.getLoggedIn}/>}/>
+            <Route path="/login" exact render={(props) => <Login {...props} isLoggedIn={this.state.isLoggedIn} getLoggedIn={this.getLoggedIn}/>}/>
+            <Route path="/" exact render={(props) => <HomePage {...props} isLoggedIn={this.state.isLoggedIn}/>}/>
+            <Route path="/map" exact render={(props) => <MapPage {...props} lat={this.state.lat} long={this.state.lng} zoom={this.state.zoom}/>} />
             <Route path="/profile" exact component={Profile} />
             
           </div>
