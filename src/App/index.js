@@ -5,6 +5,7 @@ import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
 import MapPage from '../MapPage';
 import Profile from '../Profile';
 import Register from "../Register";
+import Login from "../Login";
 
 
 class App extends Component {
@@ -47,7 +48,10 @@ class App extends Component {
                 <Link to='/register'>
                   <button className='register-btn'>Register</button>
                 </Link>
-                <button className='login-btn'>Login</button>
+
+                <Link to='/login'>
+                  <button className='login-btn'>Login</button>
+                </Link>
               </div>
             }
             {this.state.isLoggedIn &&
@@ -59,6 +63,7 @@ class App extends Component {
                 <Link to='/profile'>Profile</Link>
               </nav>}
             <Route path="/register" render={(props) => <Register {...props} getLoggedIn={this.getLoggedIn}/>}/>
+            <Route path="/login" render={(props) => <Login {...props} isLoggedIn={this.state.isLoggedIn} getLoggedIn={this.getLoggedIn}/>}/>
             <Route path="/" exact component={HomePage} />
             <Route path="/map" render={(props) => <MapPage {...props} lat={this.state.lat} long={this.state.lng} zoom={this.state.zoom}/>} />
             <Route path="/profile" exact component={Profile} />

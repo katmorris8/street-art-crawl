@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
-import HomePage from '../HomePage';
+
+
 
 export default class Register extends Component {
     constructor(props) {
@@ -93,8 +94,7 @@ export default class Register extends Component {
                     <input value={this.state.username} onChange={this.onInputChange} type="text" placeholder='Username' name='username' />
                     <input value={this.state.password} onChange={this.onInputChange} type="text" placeholder='Password' name='password' />
                     {/* <input value={this.state.password} type="text" placeholder='Confirm Password' /> */}
-                    <button type="button"  onClick={this.register}>Register</button>
-                    <button type="button" onClick={this.logIn}>Login</button>
+                    <button type="button" onClick={this.register}>Register</button>
                 </form>
             </div>
 
