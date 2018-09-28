@@ -5,6 +5,7 @@ import HomePage from '../HomePage';
 
 
 
+
 class Login extends Component {
     constructor(props) {
         super(props)
@@ -30,9 +31,14 @@ class Login extends Component {
             }
         });
         const responseBody = await response.json();
-        if (response.status === 401) {
+        if (response.status === 400) {
             this.setState({
                 errorMessage: responseBody.message
+            });
+            return;
+        }else if(response.status === 401){
+            this.setState({
+                errorMessage: responseBody.error
             });
             return;
         }
@@ -69,8 +75,10 @@ class Login extends Component {
                     <input value={this.state.username} onChange={this.onInputChange} type="text" placeholder='Username' name='username' />
                     <input value={this.state.password} onChange={this.onInputChange} type="text" placeholder='Password' name='password' />
                     <button type="button" onClick={this.logIn}>Login</button>
+                    {this.state.errorMessage && <p className='error-message'>{this.state.errorMessage}</p>}
                 </form>
                 <PrivateRoute path='/' exact component={HomePage} />
+                
             </div>
 
         )

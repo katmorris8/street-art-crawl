@@ -63,7 +63,7 @@ app.post('/api/login', async (request, response) => {
   });
 
   if (existingUser === null) {
-    response.status(401).json({
+    response.status(400).json({
       message: "Invalid username or password."
     });
     return;
