@@ -1,5 +1,7 @@
 import React, { Component } from "react";
 import './style.css';
+// import AddArtPopup from '../AddArtPopup';
+import Popup from "reactjs-popup";
 
 
 class HomePage extends Component {
@@ -13,6 +15,11 @@ class HomePage extends Component {
         return (
             <div className='homepage-container'>
                 <h1 className='homepage-title'>Street Art Crawl</h1>
+                {this.props.isLoggedIn &&
+                <Popup
+                trigger={<button className="show-instructions">Add New Art</button>}
+                modal
+                closeOnDocumentClick>put form here</Popup> }
             </div>
         )
     }
