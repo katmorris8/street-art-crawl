@@ -13,9 +13,9 @@ const jwtSecret = 'shhh12748293';
 
 app.post('/api/register', async (request, response) => {
   const { firstName, lastName, email, username, password } = request.body;
-  if (!username || !password) {
+  if (!firstName || !lastName || !email || !username || !password) {
     response.status(400).json({
-      error: "Registration requires a username and password in the request body."
+      error: "Registration requires all fields to be filled out."
     });
     return;
   }
@@ -51,7 +51,7 @@ app.post('/api/register', async (request, response) => {
 app.post('/api/login', async (request, response) => {
   const { username, password } = request.body;
   if (!username || !password) {
-    response.status(400).json({
+    response.status(401).json({
       error: "Login requires a username and password in the request body."
     });
     return;

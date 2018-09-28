@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
-import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Link, Redirect } from 'react-router-dom';
+import PrivateRoute from '../PrivateRoute';
+import HomePage from '../HomePage';
 
 
 
@@ -33,40 +35,21 @@ export default class Register extends Component {
             }
         });
         const responseBody = await response.json();
+        console.log(responseBody.message);
         if (response.status === 409) {
             this.setState({
                 errorMessage: responseBody.message
             });
             return;
-        }
-        this.props.getLoggedIn();
-        localStorage.setItem('user-jwt', JSON.stringify(responseBody.token));
-    }
-
-
-    logIn = async () => {
-        const requestBody = JSON.stringify({
-            username: this.state.username,
-            password: this.state.password,
-        });
-        const response = await fetch('/api/login', {
-            method: 'POST',
-            body: requestBody,
-            headers: {
-                'Content-Type': 'application/json'
-            }
-        });
-        const responseBody = await response.json();
-        if (response.status === 401) {
+        } else if(response.status === 400){
             this.setState({
-                errorMessage: responseBody.message
+                errorMessage: responseBody.error
             });
             return;
         }
         this.props.getLoggedIn();
         localStorage.setItem('user-jwt', JSON.stringify(responseBody.token));
     }
-
 
 
     submitHandler = (e) => {
@@ -80,6 +63,12 @@ export default class Register extends Component {
     }
 
     render() {
+        if (this.props.isLoggedIn) {
+            const { from } = this.props.location.state || { from: { pathname: "/" } };
+            return (
+                <Redirect to={from} />
+            )
+        }
         return (
 
             <div>
@@ -93,9 +82,12 @@ export default class Register extends Component {
                     <input value={this.state.email} onChange={this.onInputChange} type="text" placeholder='Email Address' name='email' />
                     <input value={this.state.username} onChange={this.onInputChange} type="text" placeholder='Username' name='username' />
                     <input value={this.state.password} onChange={this.onInputChange} type="text" placeholder='Password' name='password' />
+                    {console.log(this.state.errorMessage)}
                     {/* <input value={this.state.password} type="text" placeholder='Confirm Password' /> */}
                     <button type="button" onClick={this.register}>Register</button>
+                    {this.state.errorMessage && <p className='error-message'>{this.state.errorMessage}</p>}
                 </form>
+                <PrivateRoute path='/' exact component={HomePage}/>
             </div>
 
         )

@@ -62,7 +62,7 @@ class App extends Component {
                 &nbsp;
                 <Link to='/profile'>Profile</Link>
               </nav>}
-            <Route path="/register" render={(props) => <Register {...props} getLoggedIn={this.getLoggedIn}/>}/>
+            <Route path="/register" render={(props) => <Register {...props} isLoggedIn={this.state.isLoggedIn} getLoggedIn={this.getLoggedIn}/>}/>
             <Route path="/login" render={(props) => <Login {...props} isLoggedIn={this.state.isLoggedIn} getLoggedIn={this.getLoggedIn}/>}/>
             <Route path="/" exact component={HomePage} />
             <Route path="/map" render={(props) => <MapPage {...props} lat={this.state.lat} long={this.state.lng} zoom={this.state.zoom}/>} />
