@@ -9,7 +9,15 @@ class HomePage extends Component {
     constructor(props) {
         super(props)
         this.state = {
-            selectedFile: null
+            selectedFile: null,
+            neighborhood: '',
+            location: '',
+            date: '',
+            description: '',
+            posterPath: ''
+
+
+            
         }
     }
 
@@ -19,9 +27,48 @@ class HomePage extends Component {
             selectedFile: e.target.files[0]
         })
     }
-    uploadHandler = () => {
-        console.log(this.state.selectedFile);
+    updateStreet = (e) => {
+        this.setState({
+            location: e. target.value,
+        })
+    }    
+    updateNeighborhood = (e) => {
+        this.setState({
+            neighborhood: e.target.value,
+        })
     }
+    submitHandler = (e) => {
+        e.preventDefault();
+        let currentDate = new Date();
+        let currentDateFormatted = currentDate.getFullYear() + '-' + (currentDate.getMonth() + 1) + '-' + currentDate.getDate();
+        this.setState({
+            date: currentDateFormatted
+        })
+        this.props.currentLocation();
+    }
+
+
+    addArt = async newArt => {
+        console.log('in add art');
+        const body = JSON.stringify({
+          neighborhood: newArt.neighborhood,
+          location: newArt.location,
+          date: newArt.date,
+          description: newArt.description,
+          posterPath: newArt.posterPath
+        });
+    
+        fetch('/api/art', {
+          method: 'POST',
+          body: body,
+          headers: {
+            'Content-Type': 'application/json'
+          }
+        });
+    
+        // this.refresh();
+    
+      }
 
 
 
@@ -35,9 +82,9 @@ class HomePage extends Component {
                         modal
                         closeOnDocumentClick>
 
-                        <form>
-                            <input type='text' placeholder='Street'/>
-                            <input type='text' placeholder='Neighborhood'/>
+                        <form onSubmit={this.submitHandler}>
+                            <input type='text' onChange={this.updateStreet} placeholder='Street'/>
+                            <input type='text' onChange={this.updateNeighborhood}  placeholder='Neighborhood'/>
                             <input type='file' onChange={this.fileHandler} placeholder="Image"/>
                             <button onClick={this.uploadHandler}>Submit!</button>
                         </form>

@@ -27,8 +27,12 @@ class App extends Component {
       lng: latlong[1]
     })
   }
-  componentDidMount = () => {
+  currentLocation = () => {
     navigator.geolocation.getCurrentPosition(this.showPosition);
+
+  }
+  componentDidMount = () => {
+    this.currentLocation();
   }
 
   getLoggedIn = () => {
@@ -36,6 +40,8 @@ class App extends Component {
       isLoggedIn: true
     })
   }
+
+
 
 
   render() {
@@ -66,7 +72,7 @@ class App extends Component {
             </nav>
             <Route path="/register" exact render={(props) => <Register {...props} getLoggedIn={this.getLoggedIn} />} />
             <Route path="/login" exact render={(props) => <Login {...props} getLoggedIn={this.getLoggedIn} />} />
-            <Route path="/" exact render={(props) => <HomePage {...props} isLoggedIn={this.state.isLoggedIn} />} />
+            <Route path="/" exact render={(props) => <HomePage {...props} isLoggedIn={this.state.isLoggedIn} currentLocation={this.currentLocation} />} />
             <Route path="/map" exact render={(props) => <MapPage {...props} lat={this.state.lat} long={this.state.lng} zoom={this.state.zoom} />} />
             <PrivateRoute path="/profile" exact component={Profile} />
 
