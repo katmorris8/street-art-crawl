@@ -71,7 +71,7 @@ class HomePage extends Component {
             location: this.state.location,
             date: currentDateFormatted,
             description: this.state.description,
-            posterPath: this.state.selectedFile
+            posterPath: this.state.selectedFile.name
         }
         this.addArt(newArt)
     }
@@ -117,7 +117,7 @@ class HomePage extends Component {
                             <input type='text' onChange={this.updateStreet} placeholder='Street'/>
                             <input type='text' onChange={this.updateNeighborhood}  placeholder='Neighborhood'/>
                             <input type='text' onChange={this.updateDescription}  placeholder='Description'/>                                                      
-                            <input type='file' onChange={this.fileHandler} placeholder="Image"/>
+                            <input type='file' onChange={this.fileHandler} placeholder="Image" accept=".png, .jpg, .jpeg"/>
                             <button onClick={this.uploadHandler}>Submit!</button>
                         </form>
 
