@@ -6,7 +6,7 @@ import MapPage from '../MapPage';
 import Profile from '../Profile';
 import Register from "../Register";
 import Login from "../Login";
-
+import PrivateRoute from '../PrivateRoute';
 
 class App extends Component {
   constructor(props) {
@@ -31,11 +31,6 @@ class App extends Component {
     navigator.geolocation.getCurrentPosition(this.showPosition);
   }
 
-  getLoggedIn = () => {
-    this.setState({
-      isLoggedIn: true
-    })
-  }
 
   render() {
     return (
@@ -66,7 +61,7 @@ class App extends Component {
             <Route path="/login" exact render={(props) => <Login {...props} isLoggedIn={this.state.isLoggedIn} getLoggedIn={this.getLoggedIn}/>}/>
             <Route path="/" exact render={(props) => <HomePage {...props} isLoggedIn={this.state.isLoggedIn}/>}/>
             <Route path="/map" exact render={(props) => <MapPage {...props} lat={this.state.lat} long={this.state.lng} zoom={this.state.zoom}/>} />
-            <Route path="/profile" exact component={Profile} />
+            <PrivateRoute path="/profile" exact component={Profile} />
             
           </div>
         </Router>

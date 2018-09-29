@@ -13,7 +13,8 @@ class Login extends Component {
         this.state = {
             username: '',
             password: '',
-            errorMessage: ''
+            errorMessage: '',
+            isUserLoggedIn: false
         }
     }
 
@@ -42,8 +43,10 @@ class Login extends Component {
             });
             return;
         }
-        this.props.getLoggedIn();
         localStorage.setItem('user-jwt', JSON.stringify(responseBody.token));
+        this.setState({
+            isUserLoggedIn: true
+        });
     }
 
     submitHandler = (e) => {
@@ -57,8 +60,7 @@ class Login extends Component {
     }
 
     render() {
-        console.log(this.props.isLoggedIn);
-        if (this.props.isLoggedIn) {
+        if (this.state.isUserLoggedIn) {
             const { from } = this.props.location.state || { from: { pathname: "/" } };
             return (
                 <Redirect to={from} />
@@ -77,7 +79,6 @@ class Login extends Component {
                     <button type="button" onClick={this.logIn}>Login</button>
                     {this.state.errorMessage && <p className='error-message'>{this.state.errorMessage}</p>}
                 </form>
-                <PrivateRoute path='/' exact component={HomePage} />
                 
             </div>
 
