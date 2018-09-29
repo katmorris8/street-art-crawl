@@ -83,6 +83,18 @@ app.post('/api/login', async (request, response) => {
   }
 });
 
+app.post("/api/art", async (request, response) => {
+  const newArt = {
+    neighborhood: request.body.neighborhood,
+    location: request.body.location,
+    date: request.body.date,
+    description: request.body.description,
+    posterPath: request.body.posterPath
+  };
+  const art = await Art.create(newArt);
+  response.json(art);
+});
+
 app.get('/api/art', async (request, response) => {
   const art = await Art.findAll({});
   response.json(art);
