@@ -6,36 +6,12 @@ import Art from '../Art';
 class ArtListPage extends Component {
     constructor(props) {
       super(props)
-    
-      this.state = {
-        art: [],
-        users: []
-      }
-    }
-    
-    componentDidMount = async () => {
-        this.fetchArt();
-        this.fetchUser();
     }
 
-    fetchArt = async () => {
-        const response = await fetch('/api/art');
-        const art = await response.json();
-        this.setState({
-            art: art
-        })
-    }
-    fetchUser = async () => {
-        const response = await fetch('/api/current-user',{
-            headers: {
-                'jwt-token': localStorage.getItem('user-jwt')
-            }
-        });
-    }
     render() {
         return (
             <div className='art-list-page'>
-                {this.state.art.map(art => {
+                {this.props.art.map(art => {
                     return(
                         <Art
                             key={art.id}
