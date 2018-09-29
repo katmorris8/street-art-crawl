@@ -12,14 +12,33 @@ class HomePage extends Component {
             selectedFile: null,
             neighborhood: '',
             location: '',
-            date: '',
             description: '',
-            posterPath: ''
+            users: [],
+            art: []
 
 
             
         }
     }
+    componentDidMount = async () => {
+        this.fetchArt();
+        // this.fetchUser();
+    }
+
+    fetchArt = async () => {
+        const response = await fetch('/api/art');
+        const art = await response.json();
+        this.setState({
+            art: art
+        })
+    }
+    // fetchUser = async () => {
+    //     const response = await fetch('/api/current-user',{
+    //         headers: {
+    //             'jwt-token': localStorage.getItem('user-jwt')
+    //         }
+    //     });
+    // }
 
 
     fileHandler = (e) => {
@@ -37,15 +56,27 @@ class HomePage extends Component {
             neighborhood: e.target.value,
         })
     }
+    updateDescription = (e) => {
+        this.setState({
+            description: e.target.value,
+        })
+    }
     submitHandler = (e) => {
         e.preventDefault();
         let currentDate = new Date();
         let currentDateFormatted = currentDate.getFullYear() + '-' + (currentDate.getMonth() + 1) + '-' + currentDate.getDate();
-        this.setState({
-            date: currentDateFormatted
-        })
         this.props.currentLocation();
+        let newArt = {
+            neighborhood: this.state.neighborhood,
+            location: this.state.location,
+            date: currentDateFormatted,
+            description: this.state.description,
+            posterPath: this.state.selectedFile
+        }
+        this.addArt(newArt)
     }
+
+
 
 
     addArt = async newArt => {
@@ -66,7 +97,7 @@ class HomePage extends Component {
           }
         });
     
-        // this.refresh();
+        this.fetchArt();
     
       }
 
@@ -85,12 +116,13 @@ class HomePage extends Component {
                         <form onSubmit={this.submitHandler}>
                             <input type='text' onChange={this.updateStreet} placeholder='Street'/>
                             <input type='text' onChange={this.updateNeighborhood}  placeholder='Neighborhood'/>
+                            <input type='text' onChange={this.updateDescription}  placeholder='Description'/>                                                      
                             <input type='file' onChange={this.fileHandler} placeholder="Image"/>
                             <button onClick={this.uploadHandler}>Submit!</button>
                         </form>
 
                     </Popup>}
-                <ArtListPage />
+                <ArtListPage art={this.state.art} />
             </div>
         )
     }
