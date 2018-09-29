@@ -22,8 +22,7 @@ const main = async () => {
     location: "E. First St",
     date: "2018-09-28",
     description:"Super nice",
-    // posterPath:"/src/PicSrc/lower-east-side.jpg",
-    posterPath:'/src/PicSrc/bushwick-collective.jpg',
+    posterPath:"/src/PicSrc/lower-east-side.jpg",
     user_id: 3
   });
   await Art.create({

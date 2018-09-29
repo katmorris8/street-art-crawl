@@ -8,6 +8,7 @@ const bcrypt = require('bcrypt');
 const app = express();
 
 app.use(bodyParser.json());
+app.use('/src/PicSrc/', express.static(__dirname + '/src/PicSrc'));
 
 const jwtSecret = 'shhh12748293';
 

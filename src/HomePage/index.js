@@ -8,20 +8,20 @@ import Popup from "reactjs-popup";
 class HomePage extends Component {
     constructor(props) {
         super(props)
-    this.state = {
-        selectedFile: null
-     }
-   }
-   
- 
-   fileHandler = (e) => {
-     this.setState({
-       selectedFile: e.target.files[0]
-     }) 
-   }
-   uploadHandler = () => {
-     console.log(this.state.selectedFile);
-   }
+        this.state = {
+            selectedFile: null
+        }
+    }
+
+
+    fileHandler = (e) => {
+        this.setState({
+            selectedFile: e.target.files[0]
+        })
+    }
+    uploadHandler = () => {
+        console.log(this.state.selectedFile);
+    }
 
 
 
@@ -30,14 +30,20 @@ class HomePage extends Component {
             <div className='homepage-container'>
                 <h1 className='homepage-title'>Street Art Crawl</h1>
                 {this.props.isLoggedIn &&
-                <Popup
-                trigger={<button className="show-instructions">Add New Art</button>}
-                modal
-                closeOnDocumentClick>
-                <input type='file' onChange={this.fileHandler}/>
-                <button onClick={this.uploadHandler}>Upload!</button>
-                </Popup> }
-                <ArtListPage/>
+                    <Popup
+                        trigger={<button className="show-instructions">Add New Art</button>}
+                        modal
+                        closeOnDocumentClick>
+
+                        <form>
+                            <input type='text' placeholder='Street'/>
+                            <input type='text' placeholder='Neighborhood'/>
+                            <input type='file' onChange={this.fileHandler} placeholder="Image"/>
+                            <button onClick={this.uploadHandler}>Submit!</button>
+                        </form>
+
+                    </Popup>}
+                <ArtListPage />
             </div>
         )
     }
