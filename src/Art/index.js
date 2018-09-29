@@ -2,8 +2,6 @@ import React, { Component } from 'react';
 
 export default class Art extends Component {
   render() {
-      console.log(this.props.posterPath);
-      console.log('string');
     return (
       <div className='art-container'>
         <img src={this.props.posterPath} alt="art-image"/>
