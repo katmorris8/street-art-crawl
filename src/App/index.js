@@ -31,6 +31,12 @@ class App extends Component {
     navigator.geolocation.getCurrentPosition(this.showPosition);
   }
 
+  getLoggedIn = () => {
+    this.setState({
+      isLoggedIn: true
+    })
+  }
+
 
   render() {
     return (
@@ -49,20 +55,21 @@ class App extends Component {
                 </Link>
               </div>
             }
-            {this.state.isLoggedIn &&
-              <nav className='nav-bar homepage-nav'>
-                <Link to='/'>Home</Link>
-                &nbsp;
+
+
+            <nav className='nav-bar homepage-nav'>
+              <Link to='/'>Home</Link>
+              &nbsp;
                 <Link to='/map'>Map</Link>
-                &nbsp;
+              &nbsp;
                 <Link to='/profile'>Profile</Link>
-              </nav>}
-            <Route path="/register" exact render={(props) => <Register {...props} isLoggedIn={this.state.isLoggedIn} getLoggedIn={this.getLoggedIn}/>}/>
-            <Route path="/login" exact render={(props) => <Login {...props} isLoggedIn={this.state.isLoggedIn} getLoggedIn={this.getLoggedIn}/>}/>
-            <Route path="/" exact render={(props) => <HomePage {...props} isLoggedIn={this.state.isLoggedIn}/>}/>
-            <Route path="/map" exact render={(props) => <MapPage {...props} lat={this.state.lat} long={this.state.lng} zoom={this.state.zoom}/>} />
+            </nav>
+            <Route path="/register" exact render={(props) => <Register {...props} getLoggedIn={this.getLoggedIn} />} />
+            <Route path="/login" exact render={(props) => <Login {...props} getLoggedIn={this.getLoggedIn} />} />
+            <Route path="/" exact render={(props) => <HomePage {...props} />} />
+            <Route path="/map" exact render={(props) => <MapPage {...props} lat={this.state.lat} long={this.state.lng} zoom={this.state.zoom} />} />
             <PrivateRoute path="/profile" exact component={Profile} />
-            
+
           </div>
         </Router>
 

@@ -47,6 +47,7 @@ class Login extends Component {
         this.setState({
             isUserLoggedIn: true
         });
+        this.props.getLoggedIn();
     }
 
     submitHandler = (e) => {
@@ -60,6 +61,7 @@ class Login extends Component {
     }
 
     render() {
+        console.log('logged in?:', this.state.isUserLoggedIn);
         if (this.state.isUserLoggedIn) {
             const { from } = this.props.location.state || { from: { pathname: "/" } };
             return (
