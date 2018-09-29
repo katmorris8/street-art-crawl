@@ -1,5 +1,5 @@
 const express = require('express');
-const { User } = require('./models')
+const { User, Art } = require('./models')
 const bodyParser = require('body-parser');
 const PORT = process.env.PORT || 5678;
 const jwt = require('jsonwebtoken');
@@ -80,6 +80,27 @@ app.post('/api/login', async (request, response) => {
       message: "Invalid username or password."
     })
   }
+});
+
+app.get('/api/art', async (request, response) => {
+  const art = await Art.findAll({});
+  response.json(art);
+});
+
+app.get('/api/current-user', async (request, response) => {
+  const token = JSON.parse(request.headers['jwt-token']);
+  let tokenData;
+  try{
+    tokenData = jwt.verify(token, jwtSecret);
+  } catch(e) {
+    console.log(e);
+  }
+  const user = await User.findOne({
+    where: {
+      id: tokenData.userId
+    }
+  });
+  response.json(user);
 });
 
 app.listen(PORT, () => {

@@ -66,7 +66,7 @@ class App extends Component {
             </nav>
             <Route path="/register" exact render={(props) => <Register {...props} getLoggedIn={this.getLoggedIn} />} />
             <Route path="/login" exact render={(props) => <Login {...props} getLoggedIn={this.getLoggedIn} />} />
-            <Route path="/" exact render={(props) => <HomePage {...props} />} />
+            <Route path="/" exact render={(props) => <HomePage {...props} isLoggedIn={this.state.isLoggedIn} />} />
             <Route path="/map" exact render={(props) => <MapPage {...props} lat={this.state.lat} long={this.state.lng} zoom={this.state.zoom} />} />
             <PrivateRoute path="/profile" exact component={Profile} />
 
