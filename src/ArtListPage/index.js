@@ -9,10 +9,10 @@ class ArtListPage extends Component {
     }
 
     render() {
-        let arts = this.props.art.reverse();
+        const art = [...this.props.art].reverse();
         return (
             <div className='art-list-page'>
-                {arts.map(art => {
+                {art.map(art => {
                     return(
                         <Art
                             key={art.id}
