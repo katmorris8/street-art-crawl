@@ -73,6 +73,9 @@ class HomePage extends Component {
             description: this.state.description,
             posterPath: this.state.selectedFile.name
         }
+
+        console.log('newArt', newArt.posterPath);
+        
         this.addArt(newArt)
     }
 
@@ -88,6 +91,11 @@ class HomePage extends Component {
           description: newArt.description,
           posterPath: newArt.posterPath
         });
+
+        console.log(body.posterPath);
+        
+
+        
     
         fetch('/api/art', {
           method: 'POST',

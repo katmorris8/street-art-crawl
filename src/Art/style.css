@@ -1,0 +1,38 @@
+.art-container {
+  display: flex;
+  background-color: #FCFCFC;
+  border: 1px solid #979797;
+  width: 95%;
+  margin: 15px auto;
+  box-shadow: 0 4px 8px 0 #979797;
+}
+
+.art-img {
+  width: 30%;
+  height: 100%;
+  margin: 5px;
+}
+
+.art-info {
+  margin-left: 5px;
+}
+
+@media screen and (min-width: 426px) {
+
+  .art-list-page {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+  }
+
+  .art-container {
+    display: block;
+    width: 30%;
+  }
+
+  .art-img {
+    width: 100%;
+    height: auto;
+  }
+
+}
