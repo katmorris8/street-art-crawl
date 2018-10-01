@@ -46,8 +46,15 @@ class App extends Component {
     })
   }
 
+
   getPopupInfo = (image, street) => {
 
+}
+  logOut = () => {
+    localStorage.clear();
+    this.setState({
+      isLoggedIn: false
+    })
   }
 
 
@@ -78,6 +85,8 @@ class App extends Component {
                 <Link to='/map'>Map</Link>
               &nbsp;
                 <Link to='/profile'>Profile</Link>
+              &nbsp;
+                <Link to='/'><button className='logout-btn' onClick={this.logOut}>Log Out</button></Link>
             </nav>
             <Route path="/register" exact render={(props) => <Register {...props} getLoggedIn={this.getLoggedIn} />} />
             <Route path="/login" exact render={(props) => <Login {...props} getLoggedIn={this.getLoggedIn} />} />
