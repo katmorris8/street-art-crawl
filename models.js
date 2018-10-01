@@ -1,7 +1,6 @@
 const Sequelize = require('sequelize');
 
-const sequelize = new Sequelize({
-  database: 'street_art_db',
+const sequelize = new Sequelize(process.env.DATABASE_URL || 'postgres://localhost:5432/street_art_db', {
   dialect: 'postgres'
 });
 
@@ -24,7 +23,7 @@ const Art = sequelize.define('art', {
   location: Sequelize.TEXT,
   date: Sequelize.DATEONLY,
   description: Sequelize.TEXT,
-  posterPath: Sequelize.TEXT,
+  imageUrl: Sequelize.TEXT,
   user_id: Sequelize.INTEGER
 });
 

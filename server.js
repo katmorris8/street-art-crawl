@@ -4,13 +4,17 @@ const bodyParser = require('body-parser');
 const PORT = process.env.PORT || 5678;
 const jwt = require('jsonwebtoken');
 const bcrypt = require('bcrypt');
+const path = require('path');
 
 const app = express();
 
+app.use("/", express.static("./build/"));
 app.use(bodyParser.json());
 app.use('/src/PicSrc/', express.static(__dirname + '/src/PicSrc'));
 
+
 const jwtSecret = 'shhh12748293';
+
 
 app.post('/api/register', async (request, response) => {
   const { firstName, lastName, email, username, password } = request.body;
@@ -78,7 +82,7 @@ app.post('/api/login', async (request, response) => {
     });
   } else {
     response.status(401).json({
-      message: "Invalid username or password."
+      message: "Invalid username or Password."
     })
   }
 });
@@ -89,7 +93,7 @@ app.post("/api/art", async (request, response) => {
     location: request.body.location,
     date: request.body.date,
     description: request.body.description,
-    posterPath: request.body.posterPath
+    imageUrl: request.body.imageUrl
   };
   const art = await Art.create(newArt);
   response.json(art);
@@ -142,6 +146,12 @@ app.get('/api/current-user/art', async (request, response) => {
   })
   response.json(userArt)
 })
+
+if (process.env.NODE_ENV == "production") {
+  app.get("/*", function(request, response) {
+    response.sendFile(path.join(__dirname, "build", "index.html"));
+  });
+}
 
 app.listen(PORT, () => {
   console.log(`Express server listening on port ${PORT}`);
