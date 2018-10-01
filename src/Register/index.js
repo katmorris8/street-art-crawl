@@ -15,7 +15,8 @@ export default class Register extends Component {
             email: '',
             username: '',
             password: '',
-            errorMessage: ''
+            errorMessage: '',
+            isUserLoggedIn:false
         }
     }
 
@@ -47,8 +48,12 @@ export default class Register extends Component {
             });
             return;
         }
-        this.props.getLoggedIn();
+
         localStorage.setItem('user-jwt', JSON.stringify(responseBody.token));
+        this.setState({
+            isUserLoggedIn: true
+        });
+        this.props.getLoggedIn();
     }
 
 
@@ -63,7 +68,8 @@ export default class Register extends Component {
     }
 
     render() {
-        if (this.props.isLoggedIn) {
+        console.log('logged in:', this.state.isUserLoggedIn)
+        if (this.state.isUserLoggedIn) {
             const { from } = this.props.location.state || { from: { pathname: "/" } };
             return (
                 <Redirect to={from} />
