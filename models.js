@@ -27,8 +27,8 @@ const Art = sequelize.define('art', {
   user_id: Sequelize.INTEGER
 });
 
-Art.hasMany(User, {onDelete: 'cascade'});
-User.belongsTo(Art);
+User.hasMany(Art, {onDelete: 'cascade'});
+Art.belongsTo(User);
 
 module.exports = {
   User:User,
