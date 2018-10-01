@@ -7,6 +7,7 @@ const bcrypt = require('bcrypt');
 
 const app = express();
 
+app.use("/", express.static("./build/"));
 app.use(bodyParser.json());
 app.use('/src/PicSrc/', express.static(__dirname + '/src/PicSrc'));
 

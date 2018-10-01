@@ -8,7 +8,7 @@ class Profile extends Component {
       super(props)
     
       this.state = {
-         user:[]
+         user:{}
       }
     }
     
@@ -32,7 +32,7 @@ class Profile extends Component {
     render() {
         return (
             <div className='profile-container'>
-                <img src='#' alt='Profile Image'/>
+                <img src='' alt='Profile Image'/>
                 <h1 className='profile-title'>Hello, {this.state.user.username}</h1>
                 <p className='points-header'>points</p>
 
