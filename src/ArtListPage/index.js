@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import Art from '../Art';
-// import './style.css';
+import './style.css';
 
 
 class ArtListPage extends Component {
