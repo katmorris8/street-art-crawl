@@ -4,6 +4,7 @@ const bodyParser = require('body-parser');
 const PORT = process.env.PORT || 5678;
 const jwt = require('jsonwebtoken');
 const bcrypt = require('bcrypt');
+const path = require('path');
 
 const app = express();
 
@@ -11,7 +12,9 @@ app.use("/", express.static("./build/"));
 app.use(bodyParser.json());
 app.use('/src/PicSrc/', express.static(__dirname + '/src/PicSrc'));
 
+
 const jwtSecret = 'shhh12748293';
+
 
 app.post('/api/register', async (request, response) => {
   const { firstName, lastName, email, username, password } = request.body;
