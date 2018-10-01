@@ -82,7 +82,7 @@ app.post('/api/login', async (request, response) => {
     });
   } else {
     response.status(401).json({
-      message: "Invalid username or password."
+      message: "Invalid username or Password."
     })
   }
 });

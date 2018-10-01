@@ -27,6 +27,7 @@ class Profile extends Component {
         this.setState({
             user: user
         })
+        console.log('users: ', this.state.user);
     }
 
     render() {

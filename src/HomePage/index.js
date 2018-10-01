@@ -52,7 +52,8 @@ class HomePage extends Component {
     submitHandler = (e) => {
         e.preventDefault();
         let currentDate = new Date();
-        let currentDateFormatted = currentDate.getFullYear() + '-' + (currentDate.getMonth() + 1) + '-' + currentDate.getDate();
+        let currentDateFormatted =   (currentDate.getMonth() + 1) + '-' + currentDate.getDate() + '-' + currentDate.getFullYear();
+        console.log(currentDateFormatted);
         this.props.currentLocation(this.props.showPosition);
         let newArt = {
             neighborhood: this.state.neighborhood,
@@ -72,6 +73,7 @@ class HomePage extends Component {
 
     addArt = async newArt => {
         console.log('in add art');
+        console.log(newArt.date);
         const body = JSON.stringify({
           neighborhood: newArt.neighborhood,
           location: newArt.location,
