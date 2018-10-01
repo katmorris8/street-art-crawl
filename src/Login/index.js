@@ -78,7 +78,7 @@ class Login extends Component {
                 <form onSubmit={this.submitHandler} >
                     <input value={this.state.username} onChange={this.onInputChange} type="text" placeholder='Username' name='username' />
                     <input value={this.state.password} onChange={this.onInputChange} type="text" placeholder='Password' name='password' />
-                    <button type="button" onClick={this.logIn}>Login</button>
+                    <button type="submit" onClick={this.logIn}>Login</button>
                     {this.state.errorMessage && <p className='error-message'>{this.state.errorMessage}</p>}
                 </form>
                 
