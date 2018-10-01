@@ -4,11 +4,36 @@ import './style.css';
 
 
 class Profile extends Component {
+    constructor(props) {
+      super(props)
+    
+      this.state = {
+         user:[]
+      }
+    }
+    
+
+    componentDidMount = async () => {
+        this.fetchUser();
+    }
+
+    fetchUser = async () => {
+        const response = await fetch('/api/current-user',{
+            headers: {
+                'jwt-token': localStorage.getItem('user-jwt')
+            }
+        });
+        const user = await response.json();
+        this.setState({
+            user: user
+        })
+    }
+
     render() {
         return (
             <div className='profile-container'>
                 <img src='#' alt='Profile Image'/>
-                <h1 className='profile-title'>Hello, username</h1>
+                <h1 className='profile-title'>Hello, {this.state.user.username}</h1>
                 <p className='points-header'>points</p>
 
             </div>
