@@ -27,12 +27,13 @@ class Profile extends Component {
         this.setState({
             user: user
         })
+        console.log('users: ', this.state.user);
     }
 
     render() {
         return (
             <div className='profile-container'>
-                <img src='#' alt='Profile Image'/>
+                <img src='' alt='Profile Image'/>
                 <h1 className='profile-title'>Hello, {this.state.user.username}</h1>
                 <p className='points-header'>points</p>
 
