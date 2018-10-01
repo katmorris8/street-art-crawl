@@ -117,6 +117,12 @@ app.get('/api/current-user', async (request, response) => {
   response.json(user);
 });
 
+if (process.env.NODE_ENV == "production") {
+  app.get("/*", function(request, response) {
+    response.sendFile(path.join(__dirname, "build", "index.html"));
+  });
+}
+
 app.listen(PORT, () => {
   console.log(`Express server listening on port ${PORT}`);
 });
