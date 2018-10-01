@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import Art from '../Art';
-// import './style.css';
+import './style.css';
 
 
 class ArtListPage extends Component {
@@ -9,9 +9,10 @@ class ArtListPage extends Component {
     }
 
     render() {
+        let arts = this.props.art.reverse();
         return (
             <div className='art-list-page'>
-                {this.props.art.reverse().map(art => {
+                {arts.map(art => {
                     return(
                         <Art
                             key={art.id}

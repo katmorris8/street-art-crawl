@@ -6,9 +6,10 @@ import LeafletMap from '../Map';
 
 class MapPage extends Component {
   render() {
+    console.log('in mappage: ', this.props.markers);
     return (
       <div>
-        <LeafletMap lat={this.props.lat} long={this.props.long} zoom={this.props.zoom} />
+        <LeafletMap markers={this.props.markers} />
       </div>
     )
   }

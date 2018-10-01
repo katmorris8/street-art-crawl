@@ -13,19 +13,24 @@ class App extends Component {
     super(props)
 
     this.state = {
-      lat: 40.7527,
-      lng: 73.9772,
-      zoom: 15,
+      markers: [
+        [
+          40.7527,
+          -73.9772,
+        ]
+      ],
       isLoggedIn: false
     }
   }
 
   showPosition = (position) => {
     let latlong = [position.coords.latitude, position.coords.longitude];
-    this.setState({
-      lat: latlong[0],
-      lng: latlong[1]
+    let newMarkers =[...this.state.markers]
+    newMarkers.push(latlong);
+    this.setState({ 
+      markers: newMarkers
     })
+    console.log('in Show:', this.state.markers);
   }
   currentLocation = () => {
     navigator.geolocation.getCurrentPosition(this.showPosition);
@@ -72,8 +77,8 @@ class App extends Component {
             </nav>
             <Route path="/register" exact render={(props) => <Register {...props} getLoggedIn={this.getLoggedIn} />} />
             <Route path="/login" exact render={(props) => <Login {...props} getLoggedIn={this.getLoggedIn} />} />
-            <Route path="/" exact render={(props) => <HomePage {...props} isLoggedIn={this.state.isLoggedIn} currentLocation={this.currentLocation} />} />
-            <Route path="/map" exact render={(props) => <MapPage {...props} lat={this.state.lat} long={this.state.lng} zoom={this.state.zoom} />} />
+            <Route path="/" exact render={(props) => <HomePage {...props} isLoggedIn={this.state.isLoggedIn} currentLocation={this.currentLocation} showPosition={this.showPosition}/>} />
+            <Route path="/map" exact render={(props) => <MapPage {...props} markers={this.state.markers}/>} />
             <PrivateRoute path="/profile" exact component={Profile} />
 
           </div>
