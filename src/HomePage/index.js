@@ -3,18 +3,20 @@ import './style.css';
 import ArtListPage from '../ArtListPage';
 // import AddArtPopup from '../AddArtPopup';
 import Popup from "reactjs-popup";
+import AddImage from '../AddImage';
 
 
 class HomePage extends Component {
     constructor(props) {
         super(props)
         this.state = {
-            selectedFile: null,
+            // selectedFile: null,
             neighborhood: '',
             location: '',
             description: '',
             users: [],
-            art: []           
+            art: [],
+            imageUrl: ''           
         }
     }
     componentDidMount = async () => {
@@ -26,14 +28,10 @@ class HomePage extends Component {
         const art = await response.json();
         this.setState({
             art: art
-        })
+        });
+        console.log('ART FETCH: ', art);
     }
 
-    fileHandler = (e) => {
-        this.setState({
-            selectedFile: e.target.files[0]
-        })
-    }
     updateStreet = (e) => {
         this.setState({
             location: e. target.value,
@@ -60,10 +58,9 @@ class HomePage extends Component {
             location: this.state.location,
             date: currentDateFormatted,
             description: this.state.description,
-            posterPath: this.state.selectedFile.name
+            imageUrl: this.state.imageUrl
         }
 
-        console.log('newArt', newArt.posterPath);
         
         this.addArt(newArt)
     }
@@ -72,21 +69,15 @@ class HomePage extends Component {
 
 
     addArt = async newArt => {
-        console.log('in add art');
-        console.log(newArt.date);
         const body = JSON.stringify({
           neighborhood: newArt.neighborhood,
           location: newArt.location,
           date: newArt.date,
           description: newArt.description,
-          posterPath: newArt.posterPath
+          imageUrl: newArt.imageUrl
         });
 
-        console.log(body.posterPath);
-        
 
-        
-    
         fetch('/api/art', {
           method: 'POST',
           body: body,
@@ -97,6 +88,13 @@ class HomePage extends Component {
     
         this.fetchArt();
     
+      }
+
+      getImageURL = (url) => {
+        this.setState({
+            imageUrl: url
+        })
+        console.log('imageUrlURLURL: ', this.state.imageUrl);
       }
 
 
@@ -115,12 +113,13 @@ class HomePage extends Component {
                             <input type='text' onChange={this.updateStreet} placeholder='Street'/>
                             <input type='text' onChange={this.updateNeighborhood}  placeholder='Neighborhood'/>
                             <input type='text' onChange={this.updateDescription}  placeholder='Description'/>                                                      
-                            <input type='file' onChange={this.fileHandler} placeholder="Image" accept=".png, .jpg, .jpeg"/>
+                            {/* <input type='file' onChange={this.fileHandler} placeholder="Image" accept=".png, .jpg, .jpeg"/> */}
+                            <AddImage getImageURL={this.getImageURL}/>
                             <button onClick={this.uploadHandler}>Submit!</button>
                         </form>
 
                     </Popup>}
-                <ArtListPage art={this.state.art} />
+                <ArtListPage art={this.state.art} imageUrl={this.state.imageUrl} />
             </div>
         )
     }
