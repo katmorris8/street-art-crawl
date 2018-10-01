@@ -84,7 +84,7 @@ export default class Register extends Component {
                     <input value={this.state.password} onChange={this.onInputChange} type="text" placeholder='Password' name='password' />
                     {console.log(this.state.errorMessage)}
                     {/* <input value={this.state.password} type="text" placeholder='Confirm Password' /> */}
-                    <button type="button" onClick={this.register}>Register</button>
+                    <button type="submit" onClick={this.register}>Register</button>
                     {this.state.errorMessage && <p className='error-message'>{this.state.errorMessage}</p>}
                 </form>
                 <PrivateRoute path='/' exact component={HomePage}/>
