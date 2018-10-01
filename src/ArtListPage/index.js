@@ -21,6 +21,7 @@ class ArtListPage extends Component {
                             date={art.date}
                             description={art.description}
                             posterPath= {art.posterPath}
+                            imageUrl={art.imageUrl}
                             // userId={art.user_id}
                         />
                     )

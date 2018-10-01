@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
 import './style.css';
 
 
+
 class Profile extends Component {
     constructor(props) {
       super(props)
