@@ -14,15 +14,11 @@ class HomePage extends Component {
             location: '',
             description: '',
             users: [],
-            art: []
-
-
-            
+            art: []           
         }
     }
     componentDidMount = async () => {
         this.fetchArt();
-        // this.fetchUser();
     }
 
     fetchArt = async () => {
@@ -32,14 +28,6 @@ class HomePage extends Component {
             art: art
         })
     }
-    // fetchUser = async () => {
-    //     const response = await fetch('/api/current-user',{
-    //         headers: {
-    //             'jwt-token': localStorage.getItem('user-jwt')
-    //         }
-    //     });
-    // }
-
 
     fileHandler = (e) => {
         this.setState({
