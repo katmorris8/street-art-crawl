@@ -11,7 +11,7 @@ class ArtListPage extends Component {
     render() {
         return (
             <div className='art-list-page'>
-                {this.props.art.map(art => {
+                {this.props.art.reverse().map(art => {
                     return(
                         <Art
                             key={art.id}

@@ -1,13 +1,16 @@
 import React, { Component } from 'react';
+import "./style.css";
 
 export default class Art extends Component {
   render() {
     return (
       <div className='art-container'>
-        <img src={this.props.posterPath} alt="art-image"/>
-        <h2>{this.props.neighborhood}</h2>
-        <p>{this.props.location}</p>
-        <p>{this.props.date}</p>
+        <img className='art-img' src={this.props.posterPath} alt="art-image" />
+        <div className='art-info'>
+          <h2 className='neighborhood' >{this.props.neighborhood}</h2>
+          <p className='street' >{this.props.location}</p>
+          <p className='date' >{this.props.date}</p>
+        </div>
       </div>
     )
   }

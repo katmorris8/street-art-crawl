@@ -1,5 +1,13 @@
+* {
+    box-sizing: border-box;
+}
+
 body{
     margin: 0;
+    /* Background Designed by Mrsiraphol */
+    background-image: url("../PicSrc/OGDRZK0.jpg");
+    background-size: cover;
+    background-position: left top;
 }
 .map{
     height: 500px;
