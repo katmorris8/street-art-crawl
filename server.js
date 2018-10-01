@@ -116,6 +116,33 @@ app.get('/api/current-user', async (request, response) => {
   response.json(user);
 });
 
+app.get('/api/current-user/art', async (request, response) => {
+  const token = JSON.parse(request.headers['jwt-token']);
+  let tokenData;
+  try{
+    tokenData = jwt.verify(token, jwtSecret);
+  } catch(e) {
+    console.log(e);
+  }
+  const user = await User.findOne({
+    where: {
+      id: tokenData.userId
+    }
+  });
+  const userArt = await Art.findAll({
+    include: [
+      {
+        model: User, 
+        where: {
+          id: art_id
+        },
+        attributes: []
+      }
+    ]
+  })
+  response.json(userArt)
+})
+
 app.listen(PORT, () => {
   console.log(`Express server listening on port ${PORT}`);
 });

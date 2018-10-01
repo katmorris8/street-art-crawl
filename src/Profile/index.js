@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
 import './style.css';
+import ArtListPage from '../ArtListPage';
 
 
 class Profile extends Component {
@@ -8,13 +9,15 @@ class Profile extends Component {
       super(props)
     
       this.state = {
-         user:[]
+         user: {},
+         art: []
       }
     }
     
 
     componentDidMount = async () => {
         this.fetchUser();
+        this.fetchArt();
     }
 
     fetchUser = async () => {
@@ -23,18 +26,34 @@ class Profile extends Component {
                 'jwt-token': localStorage.getItem('user-jwt')
             }
         });
+        
         const user = await response.json();
+        console.log('user; ', user);
         this.setState({
             user: user
+        })
+    }
+
+    fetchArt = async () => {
+        const response = await fetch('/api/current-user/art', {
+            headers: {
+                'jwt-token': localStorage.getItem('user-jwt')
+            }
+        });
+        const art = await response.json();
+        console.log('ART: ', art);
+        
+        this.setState({
+            art: art
         })
     }
 
     render() {
         return (
             <div className='profile-container'>
-                <img src='#' alt='Profile Image'/>
+                <img src='' alt='Profile Image'/>
                 <h1 className='profile-title'>Hello, {this.state.user.username}</h1>
-                <p className='points-header'>points</p>
+                <ArtListPage art={this.state.art} />
 
             </div>
         )

@@ -5,11 +5,13 @@
   width: 95%;
   margin: 15px auto;
   box-shadow: 0 4px 8px 0 #979797;
+  align-items: center;
 }
 
 .art-img {
-  width: 30%;
-  height: 100%;
+  width: 9.375rem;
+  height: 9.375rem;
+  object-fit: cover;
   padding: 5px;
 }
 
