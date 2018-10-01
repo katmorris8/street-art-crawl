@@ -20,7 +20,7 @@ class LeafletMap extends Component {
     console.log('in map: ', this.props.markers);
     return (
       <div>
-        <Map className='map' center={[40.7128,-74.0060]} zoom={12}>
+        <Map className='map' center={[40.7128, -74.0060]} zoom={12}>
           <TileLayer
             attribution="&amp;copy <a href=&quot;http://osm.org/copyright&quot;>OpenStreetMap</a> contributors"
             url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
@@ -31,11 +31,10 @@ class LeafletMap extends Component {
                 position={position}
                 icon={myIcon}
                 key={index}
-              // draggable={true}
               >
                 <Popup>
                   You gotta love <br /> a good popup
-              </Popup>
+                </Popup>
               </Marker>
             )
           })}

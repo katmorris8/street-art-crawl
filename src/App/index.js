@@ -46,6 +46,10 @@ class App extends Component {
     })
   }
 
+  getPopupInfo = (image, street) => {
+
+  }
+
 
 
 
