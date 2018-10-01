@@ -6,7 +6,7 @@ const main = async () => {
     location: "St. Nicholas Ave",
     date: "2018-09-28",
     description:"Crazy cool",
-    posterPath:"/src/PicSrc/bushwick-collective.jpg",
+    imageUrl:"/src/PicSrc/bushwick-collective.jpg",
     user_id: 1
   });
   await Art.create({
@@ -14,7 +14,7 @@ const main = async () => {
     location: "20 Jay St",
     date: "2018-09-28",
     description:"Bad art, stinks",
-    posterPath:"/src/PicSrc/dumbo.jpg",
+    imageUrl:"/src/PicSrc/dumbo.jpg",
     user_id: 2
   });
   await Art.create({
@@ -22,7 +22,7 @@ const main = async () => {
     location: "E. First St",
     date: "2018-09-28",
     description:"Super nice",
-    posterPath:"/src/PicSrc/lower-east-side.jpg",
+    imageUrl:"/src/PicSrc/lower-east-side.jpg",
     user_id: 3
   });
   await Art.create({
@@ -30,7 +30,7 @@ const main = async () => {
     location: "St. Nicholas Ave",
     date: "2018-09-28",
     description:"Cool Art",
-    posterPath:"/src/PicSrc/little-italy.jpg",
+    imageUrl:"/src/PicSrc/little-italy.jpg",
     user_id: 4  
   });
 

@@ -93,7 +93,7 @@ app.post("/api/art", async (request, response) => {
     location: request.body.location,
     date: request.body.date,
     description: request.body.description,
-    posterPath: request.body.posterPath
+    imageUrl: request.body.imageUrl
   };
   const art = await Art.create(newArt);
   response.json(art);
