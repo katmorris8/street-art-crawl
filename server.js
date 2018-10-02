@@ -1,5 +1,5 @@
 const express = require('express');
-const { User, Art } = require('./models')
+const { User, Art, UserArt } = require('./models')
 const bodyParser = require('body-parser');
 const PORT = process.env.PORT || 5678;
 const jwt = require('jsonwebtoken');
@@ -128,23 +128,27 @@ app.get('/api/current-user/art', async (request, response) => {
   } catch(e) {
     console.log(e);
   }
-  const user = await User.findOne({
-    where: {
-      id: tokenData.userId
-    }
-  });
+  // const user = await User.findOne({
+  //   where: {
+  //     id: tokenData.userId
+  //   }
+  // });
+  console.log('tokenData: ', tokenData);
   const userArt = await Art.findAll({
     include: [
       {
         model: User, 
         where: {
-          id: art_id
+          art_id: tokenData.userId,
         },
         attributes: []
       }
     ]
   })
+
+
   response.json(userArt)
+  console.log("USER ART: ", userArt);
 })
 
 if (process.env.NODE_ENV == "production") {
