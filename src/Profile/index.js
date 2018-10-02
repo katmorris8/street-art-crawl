@@ -40,7 +40,7 @@ class Profile extends Component {
             }
         });
         const art = await response.json();
-        console.log('ART: ', art);
+    
         
         this.setState({
             art: art
