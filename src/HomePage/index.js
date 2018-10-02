@@ -53,6 +53,7 @@ class HomePage extends Component {
         let currentDateFormatted =   (currentDate.getMonth() + 1) + '-' + currentDate.getDate() + '-' + currentDate.getFullYear();
         console.log(currentDateFormatted);
         this.props.currentLocation(this.props.showPosition);
+        this.props.getPopupInfo(this.state.imageUrl,this.state.location)
         let newArt = {
             neighborhood: this.state.neighborhood,
             location: this.state.location,
@@ -63,7 +64,10 @@ class HomePage extends Component {
 
         
         this.addArt(newArt)
+
     }
+
+    
 
 
 
