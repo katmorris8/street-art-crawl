@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Browserrouter as Router, Route, Link, Redirect } from 'react-router-dom'
- 
+
 
 const PrivateRoute = ({ component: Component, ...rest }) => (
   <Route
@@ -9,13 +9,13 @@ const PrivateRoute = ({ component: Component, ...rest }) => (
       localStorage.getItem('user-jwt') !== null ? (
         <Component {...props} />
       ) : (
-        <Redirect
-          to={{
-            pathname: "/login",
-            state: { from: props.location }
-          }}
-        />
-      )
+          <Redirect
+            to={{
+              pathname: "/login",
+              state: { from: props.location }
+            }}
+          />
+        )
     }
   />
 );

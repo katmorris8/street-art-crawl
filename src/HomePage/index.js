@@ -1,24 +1,22 @@
 import React, { Component } from "react";
 import './style.css';
 import ArtListPage from '../ArtListPage';
-// import AddArtPopup from '../AddArtPopup';
 import Popup from "reactjs-popup";
 import AddImage from '../AddImage';
-
 
 class HomePage extends Component {
     constructor(props) {
         super(props)
         this.state = {
-            // selectedFile: null,
             neighborhood: '',
             location: '',
             description: '',
             users: [],
             art: [],
-            imageUrl: ''           
+            imageUrl: ''
         }
     }
+
     componentDidMount = async () => {
         this.fetchArt();
     }
@@ -29,29 +27,30 @@ class HomePage extends Component {
         this.setState({
             art: art
         });
-        console.log('ART FETCH: ', art);
     }
 
     updateStreet = (e) => {
         this.setState({
-            location: e. target.value,
+            location: e.target.value,
         })
-    }    
+    }
+
     updateNeighborhood = (e) => {
         this.setState({
             neighborhood: e.target.value,
         })
     }
+
     updateDescription = (e) => {
         this.setState({
             description: e.target.value,
         })
     }
+
     submitHandler = (e) => {
         e.preventDefault();
         let currentDate = new Date();
-        let currentDateFormatted =   (currentDate.getMonth() + 1) + '-' + currentDate.getDate() + '-' + currentDate.getFullYear();
-        console.log(currentDateFormatted);
+        let currentDateFormatted = (currentDate.getMonth() + 1) + '-' + currentDate.getDate() + '-' + currentDate.getFullYear();
         this.props.currentLocation(this.props.showPosition);
         let newArt = {
             neighborhood: this.state.neighborhood,
@@ -60,44 +59,34 @@ class HomePage extends Component {
             description: this.state.description,
             imageUrl: this.state.imageUrl
         }
-
-        
         this.addArt(newArt)
     }
 
-
-
-
     addArt = async newArt => {
         const body = JSON.stringify({
-          neighborhood: newArt.neighborhood,
-          location: newArt.location,
-          date: newArt.date,
-          description: newArt.description,
-          imageUrl: newArt.imageUrl
+            neighborhood: newArt.neighborhood,
+            location: newArt.location,
+            date: newArt.date,
+            description: newArt.description,
+            imageUrl: newArt.imageUrl
         });
 
 
         fetch('/api/art', {
-          method: 'POST',
-          body: body,
-          headers: {
-            'Content-Type': 'application/json'
-          }
+            method: 'POST',
+            body: body,
+            headers: {
+                'Content-Type': 'application/json'
+            }
         });
-    
         this.fetchArt();
-    
-      }
+    }
 
-      getImageURL = (url) => {
+    getImageURL = (url) => {
         this.setState({
             imageUrl: url
         })
-        console.log('imageUrlURLURL: ', this.state.imageUrl);
-      }
-
-
+    }
 
     render() {
         return (
@@ -105,15 +94,15 @@ class HomePage extends Component {
                 <h1 className='homepage-title'>Street Art Crawl</h1>
                 {this.props.isLoggedIn &&
                     <Popup className="add-art-form"
-                    trigger={<button className="add-art-btn button">Add New Art</button>}
-                    modal
-                    closeOnDocumentClick>
+                        trigger={<button className="add-art-btn button">Add New Art</button>}
+                        modal
+                        closeOnDocumentClick>
 
                         <form className="form" onSubmit={this.submitHandler}>
-                            <input className="input" type='text' onChange={this.updateStreet} placeholder='Street'/>
-                            <input className="input" type='text' onChange={this.updateNeighborhood}  placeholder='Neighborhood'/>
-                            <input className="input" type='text' onChange={this.updateDescription}  placeholder='Description'/> 
-                            <AddImage getImageURL={this.getImageURL}/>
+                            <input className="input" type='text' onChange={this.updateStreet} placeholder='Street' />
+                            <input className="input" type='text' onChange={this.updateNeighborhood} placeholder='Neighborhood' />
+                            <input className="input" type='text' onChange={this.updateDescription} placeholder='Description' />
+                            <AddImage getImageURL={this.getImageURL} />
                             <button className="input" className="art-submit-btn button" onClick={this.uploadHandler}>Submit!</button>
                         </form>
 

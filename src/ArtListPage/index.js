@@ -5,7 +5,7 @@ import './style.css';
 
 class ArtListPage extends Component {
     constructor(props) {
-      super(props)
+        super(props)
     }
 
     render() {
@@ -13,16 +13,16 @@ class ArtListPage extends Component {
         return (
             <div className='art-list-page'>
                 {art.map(art => {
-                    return(
+                    return (
                         <Art
                             key={art.id}
                             neighborhood={art.neighborhood}
                             location={art.location}
                             date={art.date}
                             description={art.description}
-                            posterPath= {art.posterPath}
+                            posterPath={art.posterPath}
                             imageUrl={art.imageUrl}
-                            // userId={art.user_id}
+                        // userId={art.user_id}
                         />
                     )
                 })}

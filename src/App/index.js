@@ -25,12 +25,11 @@ class App extends Component {
 
   showPosition = (position) => {
     let latlong = [position.coords.latitude, position.coords.longitude];
-    let newMarkers =[...this.state.markers]
+    let newMarkers = [...this.state.markers]
     newMarkers.push(latlong);
-    this.setState({ 
+    this.setState({
       markers: newMarkers
     })
-    console.log('in Show:', this.state.markers);
   }
   currentLocation = () => {
     navigator.geolocation.getCurrentPosition(this.showPosition);
@@ -46,19 +45,15 @@ class App extends Component {
     })
   }
 
-
   getPopupInfo = (image, street) => {
 
-}
+  }
   logOut = () => {
     localStorage.clear();
     this.setState({
       isLoggedIn: false
     })
   }
-
-
-
 
   render() {
     return (
@@ -85,29 +80,23 @@ class App extends Component {
                 <Link to='/'>
                   <button className='logout-btn button' onClick={this.logOut}>Log Out</button>
                 </Link>
-              </div>  
+              </div>
             }
 
-
             <nav className='nav-bar homepage-nav'>
-                <Link to='/' className='home-link'>Home</Link>
-                <Link to='/map' className='map-link'>Map</Link>
-                <Link to='/profile' className='profile-link'>Profile</Link>
+              <Link to='/' className='home-link'>Home</Link>
+              <Link to='/map' className='map-link'>Map</Link>
+              <Link to='/profile' className='profile-link'>Profile</Link>
             </nav>
             <Route path="/register" exact render={(props) => <Register {...props} getLoggedIn={this.getLoggedIn} />} />
             <Route path="/login" exact render={(props) => <Login {...props} getLoggedIn={this.getLoggedIn} />} />
-            <Route path="/" exact render={(props) => <HomePage {...props} isLoggedIn={this.state.isLoggedIn} currentLocation={this.currentLocation} showPosition={this.showPosition}/>} />
-            <Route path="/map" exact render={(props) => <MapPage {...props} markers={this.state.markers}/>} />
+            <Route path="/" exact render={(props) => <HomePage {...props} isLoggedIn={this.state.isLoggedIn} currentLocation={this.currentLocation} showPosition={this.showPosition} />} />
+            <Route path="/map" exact render={(props) => <MapPage {...props} markers={this.state.markers} />} />
             <PrivateRoute path="/profile" exact component={Profile} />
 
           </div>
         </Router>
-
-
-
       </div>
-
-
     )
   }
 }

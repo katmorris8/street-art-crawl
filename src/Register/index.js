@@ -88,9 +88,8 @@ export default class Register extends Component {
                     <input className="input" value={this.state.lastName} onChange={this.onInputChange} type="text" placeholder='Last Name' name='lastName' />
                     <input className="input" value={this.state.email} onChange={this.onInputChange} type="text" placeholder='Email Address' name='email' />
                     <input className="input" value={this.state.username} onChange={this.onInputChange} type="text" placeholder='Username' name='username' />
-                    <input className="input" value={this.state.password} onChange={this.onInputChange} type="text" placeholder='Password' name='password' />
+                    <input className="input" value={this.state.password} onChange={this.onInputChange} type="password" placeholder='Password' name='password' />
                     {console.log(this.state.errorMessage)}
-                    {/* <input value={this.state.password} type="text" placeholder='Confirm Password' /> */}
                     <button className='submit-btn button' type="submit" onClick={this.register}>Register</button>
                     {this.state.errorMessage && <p className='error-message'>{this.state.errorMessage}</p>}
                 </form>
