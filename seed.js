@@ -23,7 +23,7 @@ const main = async () => {
     date: "2018-09-28",
     description:"Super nice",
     imageUrl:"/src/PicSrc/lower-east-side.jpg",
-    user_id: 3
+    user_id: 1
   });
   await Art.create({
     neighborhood: "Little Italy",
@@ -31,7 +31,7 @@ const main = async () => {
     date: "2018-09-28",
     description:"Cool Art",
     imageUrl:"/src/PicSrc/little-italy.jpg",
-    user_id: 4  
+    user_id: 2  
   });
 
 

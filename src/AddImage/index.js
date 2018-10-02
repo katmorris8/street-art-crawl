@@ -19,22 +19,18 @@ export default class AddImage extends React.Component {
     this.setState({
       uploadedFile: files[0]
     });
-
     this.handleImageUpload(files[0]);
-
   }
 
   handleImageUpload(file) {
     let upload = request.post(CLOUDINARY_UPLOAD_URL)
-                     .field('upload_preset', CLOUDINARY_UPLOAD_PRESET)
-                     .field('file', file);
+      .field('upload_preset', CLOUDINARY_UPLOAD_PRESET)
+      .field('file', file);
 
     upload.end((err, response) => {
       if (err) {
         console.error(err);
-      }
-      console.log('response: ', response);
-      if (response.body.secure_url !== '') {
+      } if (response.body.secure_url !== '') {
         this.setState({
           uploadedFileCloudinaryUrl: response.body.secure_url
         });
@@ -45,7 +41,7 @@ export default class AddImage extends React.Component {
 
   render() {
     return (
-        <form>
+      <form>
         <div className="FileUpload">
           <Dropzone
             onDrop={this.onImageDrop.bind(this)}
@@ -56,10 +52,10 @@ export default class AddImage extends React.Component {
         </div>
         <div>
           {this.state.uploadedFileCloudinaryUrl === '' ? null :
-          <div>
-            <p>{this.state.uploadedFile.name}</p>
-            <img src={this.state.uploadedFileCloudinaryUrl} />
-          </div>}
+            <div>
+              <p>{this.state.uploadedFile.name}</p>
+              <img src={this.state.uploadedFileCloudinaryUrl} />
+            </div>}
         </div>
       </form>
     )

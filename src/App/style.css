@@ -5,10 +5,62 @@
 body{
     margin: 0;
     /* Background Designed by Mrsiraphol */
-    background-image: url("../PicSrc/OGDRZK0.jpg");
+    background: url("../PicSrc/OGDRZK0.jpg") no-repeat fixed;
     background-size: cover;
     background-position: left top;
+    font-family: 'Didact Gothic', sans-serif;
 }
-.map{
-    height: 500px;
+
+.nav-bar {
+    display: flex;
+    justify-content: space-evenly;
+    padding: 20px 0;
+    font-size: 20px;
+    font-weight: bold;
 }
+
+.home-link, .map-link, .profile-link {
+    text-decoration: none;
+    color: black;
+}
+
+.button {
+    cursor: pointer;
+    font-size: 16px;
+    padding: 5px 10px;
+    font-family: 'Didact Gothic', sans-serif;
+}
+
+.form-page {
+    width: 80%;
+    margin: 0 auto;
+  }
+
+.form {
+    display: flex;
+    flex-direction: column;
+    width: 50%;
+  }
+  
+  .input {
+    font-size: 16px;
+    padding: 5px;
+    margin: 10px 0;
+    box-shadow: 0 4px 8px 0 #979797;
+  }
+
+  .signin-btn-container, .logout-btn-container {
+      display: flex;
+      justify-content: flex-end;
+      margin: 10px 10px 0 0;
+  }
+  
+  .login-btn {
+      margin-left: 10px;
+  }
+  
+  @media screen and (max-width: 426px) {
+    .form {
+      width: 95%;
+    }
+  }

@@ -44,7 +44,7 @@ class App extends Component {
     let latlong = [position.coords.latitude, position.coords.longitude,this.state.popupInfoImage,this.state.popupInfoStreet];
     let newMarkers =[...this.state.markers]
     newMarkers.push(latlong);
-    this.setState({ 
+    this.setState({
       markers: newMarkers
     })
   }
@@ -62,7 +62,6 @@ class App extends Component {
     })
   }
 
-
   getPopupInfo = (image, street) => {
     let newPopupInfoImage = [...this.state.popupInfoImage];
     let newPopupInfoStreet = [...this.state.popupInfoStreet];
@@ -73,7 +72,8 @@ class App extends Component {
       popupInfoStreet: newPopupInfoStreet
     })
 
- }   
+  }
+
   logOut = () => {
     localStorage.clear();
     this.setState({
@@ -81,36 +81,38 @@ class App extends Component {
     })
   }
 
-
-
-
   render() {
     return (
 
       <div className="App">
         <Router>
           <div className='nav-container'>
-            {!this.state.isLoggedIn &&
-              <div>
+            {
+              !this.state.isLoggedIn &&
+              <div className="signin-btn-container">
                 <Link to='/register'>
-                  <button className='register-btn'>Register</button>
+                  <button className='register-btn button'>Register</button>
                 </Link>
 
                 <Link to='/login'>
-                  <button className='login-btn'>Login</button>
+                  <button className='login-btn button'>Login</button>
                 </Link>
               </div>
             }
 
+            {
+              this.state.isLoggedIn &&
+              <div className='logout-btn-container'>
+                <Link to='/'>
+                  <button className='logout-btn button' onClick={this.logOut}>Log Out</button>
+                </Link>
+              </div>
+            }
 
             <nav className='nav-bar homepage-nav'>
-              <Link to='/'>Home</Link>
-              &nbsp;
-                <Link to='/map'>Map</Link>
-              &nbsp;
-                <Link to='/profile'>Profile</Link>
-              &nbsp;
-                <Link to='/'><button className='logout-btn' onClick={this.logOut}>Log Out</button></Link>
+              <Link to='/' className='home-link'>Home</Link>
+              <Link to='/map' className='map-link'>Map</Link>
+              <Link to='/profile' className='profile-link'>Profile</Link>
             </nav>
             <Route path="/register" exact render={(props) => <Register {...props} getLoggedIn={this.getLoggedIn} />} />
             <Route path="/login" exact render={(props) => <Login {...props} getLoggedIn={this.getLoggedIn} />} />
@@ -120,12 +122,7 @@ class App extends Component {
 
           </div>
         </Router>
-
-
-
       </div>
-
-
     )
   }
 }
