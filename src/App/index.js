@@ -66,8 +66,9 @@ class App extends Component {
       <div className="App">
         <Router>
           <div className='nav-container'>
-            {!this.state.isLoggedIn &&
-              <div>
+            {
+              !this.state.isLoggedIn &&
+              <div className="signin-btn-container">
                 <Link to='/register'>
                   <button className='register-btn button'>Register</button>
                 </Link>
@@ -75,11 +76,16 @@ class App extends Component {
                 <Link to='/login'>
                   <button className='login-btn button'>Login</button>
                 </Link>
+              </div>
+            }
 
+            {
+              this.state.isLoggedIn &&
+              <div className='logout-btn-container'>
                 <Link to='/'>
                   <button className='logout-btn button' onClick={this.logOut}>Log Out</button>
                 </Link>
-              </div>
+              </div>  
             }
 
 

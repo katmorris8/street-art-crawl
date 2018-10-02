@@ -48,6 +48,16 @@ body{
     margin: 10px 0;
     box-shadow: 0 4px 8px 0 #979797;
   }
+
+  .signin-btn-container, .logout-btn-container {
+      display: flex;
+      justify-content: flex-end;
+      margin: 10px 10px 0 0;
+  }
+  
+  .login-btn {
+      margin-left: 10px;
+  }
   
   @media screen and (max-width: 426px) {
     .form {
