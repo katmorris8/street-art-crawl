@@ -26,4 +26,31 @@ body{
 
 .button {
     cursor: pointer;
+    font-size: 16px;
+    padding: 5px 10px;
+    font-family: 'Didact Gothic', sans-serif;
 }
+
+.form-page {
+    width: 80%;
+    margin: 0 auto;
+  }
+
+.form {
+    display: flex;
+    flex-direction: column;
+    width: 50%;
+  }
+  
+  .input {
+    font-size: 16px;
+    padding: 5px;
+    margin: 10px 0;
+    box-shadow: 0 4px 8px 0 #979797;
+  }
+  
+  @media screen and (max-width: 426px) {
+    .form {
+      width: 95%;
+    }
+  }

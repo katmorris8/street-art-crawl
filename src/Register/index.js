@@ -78,20 +78,20 @@ export default class Register extends Component {
         }
         return (
 
-            <div>
+            <div className="form-page">
                 <Link to='/'>
                     <button className='back-btn button'>Back</button>
                 </Link>
                 <h1>Register</h1>
-                <form className="registration-form" onSubmit={this.submitHandler} >
-                    <input className="registration-input" value={this.state.firstName} onChange={this.onInputChange} type="text" placeholder='First Name' name='firstName' />
-                    <input className="registration-input" value={this.state.lastName} onChange={this.onInputChange} type="text" placeholder='Last Name' name='lastName' />
-                    <input className="registration-input" value={this.state.email} onChange={this.onInputChange} type="text" placeholder='Email Address' name='email' />
-                    <input className="registration-input" value={this.state.username} onChange={this.onInputChange} type="text" placeholder='Username' name='username' />
-                    <input className="registration-input" value={this.state.password} onChange={this.onInputChange} type="text" placeholder='Password' name='password' />
+                <form className="form" onSubmit={this.submitHandler} >
+                    <input className="input" value={this.state.firstName} onChange={this.onInputChange} type="text" placeholder='First Name' name='firstName' />
+                    <input className="input" value={this.state.lastName} onChange={this.onInputChange} type="text" placeholder='Last Name' name='lastName' />
+                    <input className="input" value={this.state.email} onChange={this.onInputChange} type="text" placeholder='Email Address' name='email' />
+                    <input className="input" value={this.state.username} onChange={this.onInputChange} type="text" placeholder='Username' name='username' />
+                    <input className="input" value={this.state.password} onChange={this.onInputChange} type="text" placeholder='Password' name='password' />
                     {console.log(this.state.errorMessage)}
                     {/* <input value={this.state.password} type="text" placeholder='Confirm Password' /> */}
-                    <button className='registration-submit-btn button' type="submit" onClick={this.register}>Register</button>
+                    <button className='submit-btn button' type="submit" onClick={this.register}>Register</button>
                     {this.state.errorMessage && <p className='error-message'>{this.state.errorMessage}</p>}
                 </form>
                 <PrivateRoute path='/' exact component={HomePage}/>

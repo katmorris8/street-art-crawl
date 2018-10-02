@@ -70,15 +70,15 @@ class Login extends Component {
         }
         return (
 
-            <div>
+            <div className="form-page">
                 <Link to='/'>
-                    <button className='login-back-btn'>Back</button>
+                    <button className='login-back-btn button'>Back</button>
                 </Link>
                 <h1>Login</h1>
-                <form onSubmit={this.submitHandler} >
-                    <input value={this.state.username} onChange={this.onInputChange} type="text" placeholder='Username' name='username' />
-                    <input value={this.state.password} onChange={this.onInputChange} type="text" placeholder='Password' name='password' />
-                    <button type="submit" onClick={this.logIn}>Login</button>
+                <form className="form" onSubmit={this.submitHandler} >
+                    <input className="input" value={this.state.username} onChange={this.onInputChange} type="text" placeholder='Username' name='username' />
+                    <input className="input" value={this.state.password} onChange={this.onInputChange} type="text" placeholder='Password' name='password' />
+                    <button className="input" className='button' type="submit" onClick={this.logIn}>Login</button>
                     {this.state.errorMessage && <p className='error-message'>{this.state.errorMessage}</p>}
                 </form>
                 

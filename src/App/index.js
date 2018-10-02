@@ -69,15 +69,15 @@ class App extends Component {
             {!this.state.isLoggedIn &&
               <div>
                 <Link to='/register'>
-                  <button className='register-btn'>Register</button>
+                  <button className='register-btn button'>Register</button>
                 </Link>
 
                 <Link to='/login'>
-                  <button className='login-btn'>Login</button>
+                  <button className='login-btn button'>Login</button>
                 </Link>
 
                 <Link to='/'>
-                  <button className='logout-btn' onClick={this.logOut}>Log Out</button>
+                  <button className='logout-btn button' onClick={this.logOut}>Log Out</button>
                 </Link>
               </div>
             }
