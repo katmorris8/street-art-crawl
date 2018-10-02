@@ -18,7 +18,7 @@ class App extends Component {
           40.7527,
           -73.9772,
           'https://www.new-york-city-travel-tips.com/wordpress/wp-content/uploads/2015/01/Street-Art-Buswick-BPVNY-MPVNY-NYCTT-28-600x401.jpg',
-          'Bushwick'
+          'Midtown'
         ],
         [
           40.8115,
