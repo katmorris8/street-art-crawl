@@ -29,11 +29,9 @@ class Profile extends Component {
         });
         
         const user = await response.json();
-        console.log('user; ', user);
         this.setState({
             user: user
         })
-        console.log('users: ', this.state.user);
     }
 
     fetchArt = async () => {
@@ -43,18 +41,18 @@ class Profile extends Component {
             }
         });
         const art = await response.json();
-        console.log('ART: ', art);
         
         this.setState({
             art: art
         })
+        console.log('PROFILE ART: ', art);
     }
 
     render() {
         return (
             <div className='profile-container'>
-                <img src='' alt='Profile Image'/>
-                <h1 className='profile-title'>Hello, {this.state.user.username}</h1>
+                {this.state.user &&
+                <h1 className='profile-title'>Hello, {this.state.user.username}</h1>}
                 <ArtListPage art={this.state.art} />
 
             </div>
