@@ -135,19 +135,6 @@ app.get('/api/current-user/art', async (request, response) => {
   });
   
   const arts = await user.getArts();
-  // console.log('tokenData: ', tokenData);
-  // const userArt = await Art.findAll({
-  //   include: [
-  //     {
-  //       model: User, 
-  //       where: {
-  //         user_id: tokenData.userId,
-  //       },
-  //       attributes: []
-  //     }
-  //   ]
-  // })
-
 
   response.json(arts)
   console.log("USER ART: ", arts);
