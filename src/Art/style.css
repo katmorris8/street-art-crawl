@@ -6,6 +6,7 @@
   margin: 15px auto;
   box-shadow: 0 4px 8px 0 #979797;
   align-items: center;
+  justify-content: flex-start;
 }
 
 .art-img {

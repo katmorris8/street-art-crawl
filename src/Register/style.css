@@ -1,0 +1,12 @@
+.back-btn {
+  font-size: 18px;
+  font-family: 'Didact Gothic', sans-serif;
+  padding: 5px 10px;
+}
+
+.registration-form {
+  display: flex;
+  flex-direction: column;
+  width: 50%;
+  margin: 30px;
+}

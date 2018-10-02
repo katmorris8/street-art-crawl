@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import "../App/style.css";
+import "./style.css";
 import Leaflet from 'leaflet';
 import { Map, TileLayer, Marker, Popup } from 'react-leaflet';
 

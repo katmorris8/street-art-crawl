@@ -75,18 +75,18 @@ class App extends Component {
                 <Link to='/login'>
                   <button className='login-btn'>Login</button>
                 </Link>
+
+                <Link to='/'>
+                  <button className='logout-btn' onClick={this.logOut}>Log Out</button>
+                </Link>
               </div>
             }
 
 
             <nav className='nav-bar homepage-nav'>
-              <Link to='/'>Home</Link>
-              &nbsp;
-                <Link to='/map'>Map</Link>
-              &nbsp;
-                <Link to='/profile'>Profile</Link>
-              &nbsp;
-                <Link to='/'><button className='logout-btn' onClick={this.logOut}>Log Out</button></Link>
+                <Link to='/' className='home-link'>Home</Link>
+                <Link to='/map' className='map-link'>Map</Link>
+                <Link to='/profile' className='profile-link'>Profile</Link>
             </nav>
             <Route path="/register" exact render={(props) => <Register {...props} getLoggedIn={this.getLoggedIn} />} />
             <Route path="/login" exact render={(props) => <Login {...props} getLoggedIn={this.getLoggedIn} />} />

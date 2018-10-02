@@ -54,7 +54,7 @@ class Profile extends Component {
         return (
             <div className='profile-container'>
                 <img src='' alt='Profile Image'/>
-                <h1 className='profile-title'>Hello, {this.state.user.username}</h1>
+                {/* <h1 className='profile-title'>Hello, {this.state.user.username}</h1> */}
                 <ArtListPage art={this.state.art} />
 
             </div>

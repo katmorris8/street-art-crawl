@@ -104,8 +104,8 @@ class HomePage extends Component {
             <div className='homepage-container'>
                 <h1 className='homepage-title'>Street Art Crawl</h1>
                 {this.props.isLoggedIn &&
-                    <Popup
-                        trigger={<button className="show-instructions">Add New Art</button>}
+                    <Popup className="add-art-form"
+                        trigger={<button className="add-art-btn">Add New Art</button>}
                         modal
                         closeOnDocumentClick>
 
@@ -115,7 +115,7 @@ class HomePage extends Component {
                             <input type='text' onChange={this.updateDescription}  placeholder='Description'/>                                                      
                             {/* <input type='file' onChange={this.fileHandler} placeholder="Image" accept=".png, .jpg, .jpeg"/> */}
                             <AddImage getImageURL={this.getImageURL}/>
-                            <button onClick={this.uploadHandler}>Submit!</button>
+                            <button className="art-submit-btn" onClick={this.uploadHandler}>Submit!</button>
                         </form>
 
                     </Popup>}
