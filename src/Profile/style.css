@@ -1,0 +1,11 @@
+.profile-title {
+  text-align: center;
+  font-family: 'Francois One', sans-serif;
+  font-size: 48px;
+}
+
+@media screen and (max-width: 425px) {
+  .profile-title {
+    font-size: 42px;
+  }
+}
