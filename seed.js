@@ -42,9 +42,7 @@ const main = async () => {
     passwordDigest: passwordDigest
   })
 
-  await art1.setUser(user);
   await art2.setUser(user);
-  await art3.setUser(user);
   await art4.setUser(user);
 
   process.exit();
