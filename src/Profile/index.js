@@ -42,7 +42,6 @@ class Profile extends Component {
         this.setState({
             art: art
         })
-        console.log('PROFILE ART: ', art);
     }
 
     render() {
