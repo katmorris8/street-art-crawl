@@ -22,7 +22,6 @@ class ArtListPage extends Component {
                             description={art.description}
                             posterPath={art.posterPath}
                             imageUrl={art.imageUrl}
-                        // userId={art.user_id}
                         />
                     )
                 })}
