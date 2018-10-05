@@ -52,9 +52,7 @@ class App extends Component {
     navigator.geolocation.getCurrentPosition(this.showPosition);
 
   }
-  // componentDidMount = () => {
-  //   this.currentLocation();
-  // }
+
 
   getLoggedIn = () => {
     this.setState({
