@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
 import './style.css';
 import ArtListPage from '../ArtListPage';
-
+  //
 class Profile extends Component {
     constructor(props) {
       super(props)
@@ -56,4 +56,4 @@ class Profile extends Component {
     }
 }
 
-export default Profile;
+export default Profile;ac
