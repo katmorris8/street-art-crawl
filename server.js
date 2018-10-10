@@ -73,7 +73,7 @@ app.post('/api/login', async (request, response) => {
     });
     return;
   }
-  
+
   const isPasswordCorrect = await bcrypt.compare(password, existingUser.passwordDigest);
   if (isPasswordCorrect) {
     const token = jwt.sign({ userId: existingUser.id }, jwtSecret);
@@ -105,11 +105,12 @@ app.get('/api/art', async (request, response) => {
 });
 
 app.get('/api/current-user', async (request, response) => {
+  console.log('hello');
   const token = JSON.parse(request.headers['jwt-token']);
   let tokenData;
-  try{
+  try {
     tokenData = jwt.verify(token, jwtSecret);
-  } catch(e) {
+  } catch (e) {
     console.log(e);
   }
   const user = await User.findOne({
@@ -123,9 +124,9 @@ app.get('/api/current-user', async (request, response) => {
 app.get('/api/current-user/art', async (request, response) => {
   const token = JSON.parse(request.headers['jwt-token']);
   let tokenData;
-  try{
+  try {
     tokenData = jwt.verify(token, jwtSecret);
-  } catch(e) {
+  } catch (e) {
     console.log(e);
   }
   const user = await User.findOne({
@@ -133,18 +134,68 @@ app.get('/api/current-user/art', async (request, response) => {
       id: tokenData.userId
     }
   });
-  
+
   const arts = await user.getArts();
+  console.log("USER ART: ", arts);
 
   response.json(arts)
-  console.log("USER ART: ", arts);
 })
 
 if (process.env.NODE_ENV == "production") {
-  app.get("/*", function(request, response) {
+  app.get("/*", function (request, response) {
     response.sendFile(path.join(__dirname, "build", "index.html"));
   });
 }
+
+
+app.delete('/api/current-user', async (req, res) => {
+  const token = JSON.parse(req.headers['jwt-token']);
+  console.log('TOKENNNNNN: ', token);
+  let tokenData;
+  try {
+    tokenData = jwt.verify(token, jwtSecret);
+  } catch (e) {
+    console.log(e);
+  }
+  // const user = await User.findOne({
+  //   where: {
+  //     id: tokenData.userId
+  //   }
+  // });
+
+  await User.destroy({
+    where: {
+      id: tokenData.userId
+    }
+  })
+  res.sendStatus(200);
+});
+
+
+app.put('/api/current-user', async (req, res) => {
+  const username = req.body;
+  console.log("USERNAMEEEEEEEEE: ", username);
+  const token = JSON.parse(req.headers['jwt-token']);
+  let tokenData;
+  try {
+    tokenData = jwt.verify(token, jwtSecret);
+  } catch (e) {
+    console.log(e);
+  }
+  const user = await User.findOne({
+    where: {
+      id: tokenData.userId
+    }
+  });
+
+  if (username) {
+    user.username = username.username;
+  }
+
+  await user.save();
+
+  res.sendStatus(200);
+});
 
 app.listen(PORT, () => {
   console.log(`Express server listening on port ${PORT}`);

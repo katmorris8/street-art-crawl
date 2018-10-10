@@ -7,6 +7,7 @@ import Profile from '../Profile';
 import Register from "../Register";
 import Login from "../Login";
 import PrivateRoute from '../PrivateRoute';
+import Settings from '../Settings';
 
 class App extends Component {
   constructor(props) {
@@ -52,6 +53,7 @@ class App extends Component {
     navigator.geolocation.getCurrentPosition(this.showPosition);
 
   }
+
 
   getLoggedIn = () => {
     this.setState({
@@ -102,6 +104,9 @@ class App extends Component {
               <div className='logout-btn-container'>
                 <Link to='/'>
                   <button className='logout-btn button' onClick={this.logOut}>Log Out</button>
+                </Link>                
+                <Link to='/settings'>
+                  <button className='settings-btn button'>User Settings</button>
                 </Link>
               </div>
             }
@@ -116,6 +121,7 @@ class App extends Component {
             <Route path="/" exact render={(props) => <HomePage {...props} getPopupInfo={this.getPopupInfo} isLoggedIn={this.state.isLoggedIn} currentLocation={this.currentLocation} showPosition={this.showPosition}/>} />
             <Route path="/map" exact render={(props) => <MapPage {...props} markers={this.state.markers}/>} />
             <PrivateRoute path="/profile" exact component={Profile} />
+            <PrivateRoute path="/settings" exact component={Settings}/>
 
           </div>
         </Router>
