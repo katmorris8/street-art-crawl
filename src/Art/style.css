@@ -1,12 +1,17 @@
+.art-list-page {
+  margin: 0 auto;
+}
+
 .art-container {
   display: flex;
   background-color: #FCFCFC;
   border: 1px solid #979797;
   width: 95%;
-  margin: 15px auto;
+  margin: 15px 15px;
   box-shadow: 0 4px 8px 0 #979797;
   align-items: center;
-  justify-content: flex-start;
+  justify-content: space-around;
+  flex-wrap: wrap;
 }
 
 .art-img {
@@ -24,7 +29,6 @@
   .art-list-page {
     display: flex;
     flex-wrap: wrap;
-    justify-content: flex-start;
   }
 
   .art-container {

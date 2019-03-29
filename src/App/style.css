@@ -24,11 +24,20 @@ body{
     color: black;
 }
 
+.home-link:hover, .map-link:hover, .profile-link:hover {
+    text-shadow: 2px 2px cyan, 1px -2px magenta, -2px 1px yellow;
+}
+
+
 .button {
     cursor: pointer;
     font-size: 16px;
     padding: 5px 10px;
     font-family: 'Didact Gothic', sans-serif;
+}
+
+.button:hover {
+    box-shadow: 2px 2px cyan, 1px -2px magenta, -2px 1px yellow;
 }
 
 .form-page {
@@ -56,6 +65,10 @@ body{
   }
   
   .login-btn {
+      margin-left: 10px;
+  }
+
+  .settings-btn {
       margin-left: 10px;
   }
   

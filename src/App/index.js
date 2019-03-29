@@ -104,7 +104,7 @@ class App extends Component {
               <div className='logout-btn-container'>
                 <Link to='/'>
                   <button className='logout-btn button' onClick={this.logOut}>Log Out</button>
-                </Link>                
+                </Link>
                 <Link to='/settings'>
                   <button className='settings-btn button'>User Settings</button>
                 </Link>
@@ -121,7 +121,7 @@ class App extends Component {
             <Route path="/" exact render={(props) => <HomePage {...props} getPopupInfo={this.getPopupInfo} isLoggedIn={this.state.isLoggedIn} currentLocation={this.currentLocation} showPosition={this.showPosition}/>} />
             <Route path="/map" exact render={(props) => <MapPage {...props} markers={this.state.markers}/>} />
             <PrivateRoute path="/profile" exact component={Profile} />
-            <PrivateRoute path="/settings" exact component={Settings}/>
+            <PrivateRoute path="/settings" exact component={Settings} />
 
           </div>
         </Router>

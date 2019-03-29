@@ -50,7 +50,7 @@ export default class Settings extends Component {
             <div>
                 <form onSubmit={this.updateUsername} className='form'>
                     <input onChange={this.inputHandler} className='input' type="text" placeholder='Enter new username' />
-                    <button className='button'>Submit</button>
+                    <button className='button settings-btn'>Submit</button>
                     <p>Pressing this button will delete your profile! Beware</p>
                     <button className='button delete-button' onClick={this.deleteUser}>Delete Profile</button>
                 </form>
