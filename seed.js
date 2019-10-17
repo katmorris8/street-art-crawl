@@ -35,10 +35,10 @@ const main = async () => {
   const password = 'asdf';
   const passwordDigest = await bcrypt.hash(password, 12);
   const user = await User.create({
-    firstName: 'wade',
-    lastName: 'seidule',
-    email: 'wade.email',
-    username: 'wade',
+    firstName: 'kat',
+    lastName: 'morris',
+    email: 'kat.email',
+    username: 'kat',
     passwordDigest: passwordDigest
   })
 
